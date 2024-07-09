@@ -15,25 +15,27 @@ TODO: Print the temperature on the screen.
 
 USE TYPEHINTING EVERYWHERE!
 */
-class beverage {
+class Beverage {
 
 	//properties
-	public ?string $color;
+	public string $color;
 	public float $price;
-	public ?string $temperature;
+	public string $temperature;
 
 	//constructor
-	public function __construct (?string $color, float $price){
+	public function __construct (string $color, float $price, string $temperature = 'cold')
+	{
 		$this->color = $color;
 		$this->price = $price;
-		$this->temperature = 'cold';
+		$this->temperature = $temperature;
 	}
 	
 	//function
-	public function getInfo (){
-		echo ´This beverage is $temperature and $color.´
+	public function getInfo() : string 
+	{
+		return "This beverage is $this->temperature and $this->color.";
 	}
 }
 
-$b1 = new beverage('black', 2,00);
-b1->getInfo();
+$b1 = new Beverage("black", 2.00);
+echo $b1->getInfo();
